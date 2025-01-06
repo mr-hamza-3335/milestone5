@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic & Editable Resume</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</head>
+<body>
+  <div class="container">
+    <h1>Dynamic & Editable Resume</h1>
+
+    <!-- Resume Form -->
+    <form id="resume-form">
+      <section>
+        <h2>Personal Information</h2>
+
+        <!-- Profile Picture Upload -->
+        <label for="profile-picture">Profile Picture:</label>
+        <input type="file" id="profile-picture" accept="image/*">
+        <div class="profile-preview">
+          <img id="profile-preview" src="default-profile.png" alt="Profile Preview">
+        </div>
+
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" placeholder="Enter your full name" value="Ameer Hamza" required>
+
+        <label for="title">Title:</label>
+        <input type="text" id="title" placeholder="Enter your title" value="Dynamic IT Professional | Web Developer" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter your email" value="mrhamza3335@gmail.com" required>
+
+        <label for="contact">Contact Number:</label>
+        <input type="tel" id="contact" placeholder="Enter your contact number" value="03140332320" required>
+
+        <label for="address">Address:</label>
+        <textarea id="address" rows="3" placeholder="Enter your address" required>Sector 8, Baldia Town, Saeedabad, Karachi</textarea>
+      </section>
+
+      <section>
+        <h2>Objective</h2>
+        <textarea id="objective" rows="5" placeholder="Enter your career objective" required>
+Dynamic and detail-oriented IT professional with a solid foundation in web development and computer science.
+        </textarea>
+      </section>
+
+      <section>
+        <h2>Education</h2>
+        <div id="education-container">
+          <div class="education-item">
+            <label>Degree:</label>
+            <input type="text" class="degree" placeholder="Enter degree" value="Intermediate (Pre-Engineering): Karachi Board" required>
+            <label>Year:</label>
+            <input type="text" class="year" placeholder="Enter year" value="2021 - 2023" required>
+          </div>
+          <div class="education-item">
+            <label>Degree:</label>
+            <input type="text" class="degree" placeholder="Enter degree" value="Matriculation (Science): Karachi Board" required>
+            <label>Year:</label>
+            <input type="text" class="year" placeholder="Enter year" value="2019 - 2021" required>
+          </div>
+        </div>
+        <button type="button" id="add-education">Add More Education</button>
+      </section>
+
+      <section>
+        <h2>Skills</h2>
+        <textarea id="skills" rows="3" placeholder="Enter your skills, separated by commas" required>
+MS Word, MS Excel, MS PowerPoint, HTML, CSS, TypeScript
+        </textarea>
+      </section>
+
+      <section>
+        <h2>Work Experience</h2>
+        <textarea id="experience" rows="5" placeholder="Enter your work experience, separated by commas">
+Utilized MS Office for data management, presentations, and documentation. Created and edited video content to enhance digital media strategies.
+        </textarea>
+      </section>
+
+      <button type="submit">Generate Resume</button>
+    </form>
+
+    <!-- Generated Resume -->
+    <div id="resume-container" style="display: none;">
+      <header>
+        <div class="profile-container">
+          <img id="display-profile" src="default-profile.png" alt="Profile Picture">
+        </div>
+        <div>
+          <h1 contenteditable="true" id="display-name"></h1>
+          <p contenteditable="true" id="display-title" style="margin-top: 0;"></p>
+        </div>
+      </header>
+
+      <section class="personal-info">
+        <h2>Personal Information</h2>
+        <p><strong>Email:</strong> <span contenteditable="true" id="display-email"></span></p>
+        <p><strong>Contact:</strong> <span contenteditable="true" id="display-contact"></span></p>
+        <p><strong>Address:</strong> <span contenteditable="true" id="display-address"></span></p>
+      </section>
+
+      <section class="career-objective">
+        <h2>Objective</h2>
+        <p contenteditable="true" id="display-objective"></p>
+      </section>
+
+      <section class="education">
+        <h2>Education</h2>
+        <ul id="display-education"></ul>
+      </section>
+
+      <section class="skills">
+        <h2>Skills</h2>
+        <ul id="display-skills"></ul>
+      </section>
+
+      <section class="work-experience">
+        <h2>Work Experience</h2>
+        <ul id="display-experience"></ul>
+      </section>
+    </div>
+
+    <!-- Action Buttons -->
+    <button id="finalize-resume" style="display: none;">Finalize Resume</button>
+<button id="shareable-link" style="display: none;">Copy Shareable Link</button>
+<button id="download-pdf" style="display: none;">Download as PDF</button>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
